@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.hackeru.todolist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
