@@ -1,5 +1,6 @@
 package com.hackeru.todolist;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,22 @@ public class AddTaskAdapter extends RecyclerView.Adapter<AddTaskAdapter.TasksVie
         Task item = taskArrayist.get(position);
         holder.taskNameTv.setText(item.getTaskName());
         holder.taskDescriptionTv.setText(item.getTaskDescription());
+        holder.taskStatusTv.setText(taskArrayist.get(position).taskStatus.name());
+
+        switch (taskArrayist.get(position).taskStatus){
+            case TODO:
+                holder.taskStatusTv.setTextColor(Color.RED);
+                break;
+            case INPROGRESS:
+                holder.taskStatusTv.setTextColor(Color.YELLOW);
+                break;
+            case COMPLETED:
+                holder.taskStatusTv.setTextColor(Color.GREEN);
+                break;
+            case UNKNOWN:
+                holder.taskStatusTv.setTextColor(Color.GRAY);
+                break;
+        }
     }
 
     @Override
@@ -51,6 +68,7 @@ public class AddTaskAdapter extends RecyclerView.Adapter<AddTaskAdapter.TasksVie
         RecyclerView recyclerView;
         TextView taskNameTv;
         TextView taskDescriptionTv;
+        TextView taskStatusTv;
 
 
         public TasksViewHolder(@NonNull View itemView) {
@@ -58,6 +76,7 @@ public class AddTaskAdapter extends RecyclerView.Adapter<AddTaskAdapter.TasksVie
             recyclerView = itemView.findViewById(R.id.main_container);
             taskNameTv = itemView.findViewById(R.id.task_name_tv);
             taskDescriptionTv = itemView.findViewById(R.id.task_description_tv);
+            taskStatusTv = itemView.findViewById(R.id.task_status);
 
         }
     }

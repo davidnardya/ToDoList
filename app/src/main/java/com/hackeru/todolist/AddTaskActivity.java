@@ -10,12 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.hackeru.todolist.pojo.Status;
 import com.hackeru.todolist.pojo.Task;
 
 public class AddTaskActivity extends AppCompatActivity {
 
     EditText newTaskNameEt;
     EditText newTaskDescriptionEt;
+    EditText newTaskStatusEt;
     Button addAmdFinishBtn;
 
     @Override
@@ -26,13 +28,15 @@ public class AddTaskActivity extends AppCompatActivity {
         newTaskNameEt = findViewById(R.id.new_task_name_et);
         newTaskDescriptionEt = findViewById(R.id.new_task_description);
         addAmdFinishBtn = findViewById(R.id.finish_new_task_btn);
+        newTaskStatusEt = findViewById(R.id.new_task_status);
 
         addAmdFinishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String taskName = newTaskNameEt.getText().toString();
                 String taskDescription = newTaskDescriptionEt.getText().toString();
-                Task task = new Task(taskName, taskDescription);
+                Status taskStatus = Status.getStatus(newTaskStatusEt.getText().toString());
+                Task task = new Task(taskName, taskDescription, taskStatus);
                 DataManager.addNewTask(task);
 
                 setResult(Activity.RESULT_OK);

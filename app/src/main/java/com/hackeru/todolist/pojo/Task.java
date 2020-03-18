@@ -4,7 +4,7 @@ public class Task {
     private String taskName;
     private String taskDescription;
     private Date date;
-    Status taskStatus; //TODO, INPROGRESS, COMPLETED, UNKNOWN
+    public Status taskStatus; //TODO, INPROGRESS, COMPLETED, UNKNOWN
 
     public Task(String taskName, String taskDescription, Status taskStatus) {
         this.taskName = taskName;
