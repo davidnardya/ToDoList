@@ -16,6 +16,11 @@ public class AddTaskAdapter extends RecyclerView.Adapter<AddTaskAdapter.TasksVie
 
     ArrayList<Task> taskArrayist;
 
+    public void setInfo(ArrayList<Task> list){
+        taskArrayist = list;
+        notifyDataSetChanged();
+    }
+
     public AddTaskAdapter(ArrayList<Task> taskArrayist) {
         this.taskArrayist = taskArrayist;
     }
@@ -34,7 +39,6 @@ public class AddTaskAdapter extends RecyclerView.Adapter<AddTaskAdapter.TasksVie
         Task item = taskArrayist.get(position);
         holder.taskNameTv.setText(item.getTaskName());
         holder.taskDescriptionTv.setText(item.getTaskDescription());
-        DataManager.addNewTask(taskArrayist.get(position));
     }
 
     @Override

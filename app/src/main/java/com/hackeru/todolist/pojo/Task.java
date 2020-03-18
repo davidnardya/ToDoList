@@ -5,6 +5,11 @@ public class Task {
     private String taskDescription;
     private Date date;
 
+    public Task(String taskName, String taskDescription) {
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+    }
+
     public String getTaskName() {
         return taskName;
     }
