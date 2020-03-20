@@ -50,12 +50,13 @@ public class AddTaskActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         Toast.makeText(AddTaskActivity.this,"OK Clicked",Toast.LENGTH_SHORT).show();
+                        setResult(Activity.RESULT_OK);
+                        finish();
                     }
                 });
                 alert.show();
 
-                setResult(Activity.RESULT_OK);
-                finish();
+
             }
         });
     }
