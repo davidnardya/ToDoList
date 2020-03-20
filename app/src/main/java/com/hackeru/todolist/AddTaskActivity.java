@@ -3,11 +3,14 @@ package com.hackeru.todolist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.hackeru.todolist.pojo.Status;
@@ -38,6 +41,18 @@ public class AddTaskActivity extends AppCompatActivity {
                 Status taskStatus = Status.getStatus(newTaskStatusEt.getText().toString());
                 Task task = new Task(taskName, taskDescription, taskStatus);
                 DataManager.addNewTask(task);
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(AddTaskActivity.this);
+                alert.setTitle("Title");
+                alert.setMessage("This is a message");
+                alert.setCancelable(false);
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        Toast.makeText(AddTaskActivity.this,"OK Clicked",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alert.show();
 
                 setResult(Activity.RESULT_OK);
                 finish();
